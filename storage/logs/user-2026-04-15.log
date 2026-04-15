@@ -1,0 +1,5 @@
+{"message":"Database connection established","context":{"host":"localhost","database":"imei_bot"},"level":200,"level_name":"INFO","channel":"imei_bot","datetime":"2026-04-15T20:37:09.413697+02:00","extra":{}}
+{"message":"Database connection established","context":{"host":"localhost","database":"imei_bot"},"level":200,"level_name":"INFO","channel":"imei_bot","datetime":"2026-04-15T20:37:15.803555+02:00","extra":{}}
+{"message":"Database connection established","context":{"host":"localhost","database":"imei_bot"},"level":200,"level_name":"INFO","channel":"imei_bot","datetime":"2026-04-15T20:39:10.581012+02:00","extra":{}}
+{"message":"Database connection established","context":{"host":"localhost","database":"imei_bot"},"level":200,"level_name":"INFO","channel":"imei_bot","datetime":"2026-04-15T20:39:17.105168+02:00","extra":{}}
+{"message":"Database connection established","context":{"host":"localhost","database":"imei_bot"},"level":200,"level_name":"INFO","channel":"imei_bot","datetime":"2026-04-15T20:44:05.917512+02:00","extra":{}}

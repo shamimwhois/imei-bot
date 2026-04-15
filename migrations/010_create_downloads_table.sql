@@ -1,0 +1,37 @@
+-- Create downloads table for tracking file downloads
+CREATE TABLE IF NOT EXISTS `downloads` (
+    `id` BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    `uuid` VARCHAR(36) NOT NULL UNIQUE,
+    `user_id` BIGINT UNSIGNED NULL,
+    `file_id` BIGINT UNSIGNED NOT NULL,
+    `platform` ENUM('telegram', 'whatsapp', 'web', 'api', 'admin') NOT NULL,
+    `ip_address` VARCHAR(45) NULL,
+    `user_agent` TEXT NULL,
+    `download_token` VARCHAR(64) NULL UNIQUE,
+    `download_started_at` TIMESTAMP NULL,
+    `download_completed_at` TIMESTAMP NULL,
+    `download_size_bytes` BIGINT UNSIGNED NULL,
+    `download_speed_bps` INT UNSIGNED NULL,
+    `status` ENUM('pending', 'started', 'completed', 'failed', 'cancelled', 'expired') NOT NULL DEFAULT 'pending',
+    `failure_reason` VARCHAR(255) NULL,
+    `retry_count` INT UNSIGNED NOT NULL DEFAULT 0,
+    `max_retries` INT UNSIGNED NOT NULL DEFAULT 3,
+    `expires_at` TIMESTAMP NULL,
+    `metadata` JSON NULL,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (`file_id`) REFERENCES `files`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+    
+    INDEX `idx_downloads_user_id` (`user_id`),
+    INDEX `idx_downloads_file_id` (`file_id`),
+    INDEX `idx_downloads_platform` (`platform`),
+    INDEX `idx_downloads_ip_address` (`ip_address`),
+    INDEX `idx_downloads_download_token` (`download_token`),
+    INDEX `idx_downloads_status` (`status`),
+    INDEX `idx_downloads_download_started_at` (`download_started_at`),
+    INDEX `idx_downloads_download_completed_at` (`download_completed_at`),
+    INDEX `idx_downloads_expires_at` (`expires_at`),
+    INDEX `idx_downloads_created_at` (`created_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

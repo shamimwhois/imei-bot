@@ -1,0 +1,37 @@
+-- Create payment_subscriptions table for recurring payments
+CREATE TABLE IF NOT EXISTS `payment_subscriptions` (
+    `id` BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    `uuid` VARCHAR(36) NOT NULL UNIQUE,
+    `user_id` BIGINT UNSIGNED NOT NULL,
+    `gateway` ENUM('binance_p2p', 'binance_b2b', 'bkash', 'nagad', 'bank_card', 'paypal', 'stripe') NOT NULL,
+    `gateway_subscription_id` VARCHAR(255) NULL,
+    `plan_name` VARCHAR(100) NOT NULL,
+    `plan_type` ENUM('basic', 'premium', 'enterprise', 'custom') NOT NULL,
+    `amount` DECIMAL(10,2) NOT NULL,
+    `currency` VARCHAR(3) NOT NULL DEFAULT 'USD',
+    `billing_cycle` ENUM('daily', 'weekly', 'monthly', 'quarterly', 'yearly') NOT NULL,
+    `status` ENUM('active', 'paused', 'cancelled', 'expired', 'failed') NOT NULL DEFAULT 'active',
+    `current_period_start` TIMESTAMP NOT NULL,
+    `current_period_end` TIMESTAMP NOT NULL,
+    `trial_start` TIMESTAMP NULL,
+    `trial_end` TIMESTAMP NULL,
+    `cancelled_at` TIMESTAMP NULL,
+    `expires_at` TIMESTAMP NULL,
+    `last_payment_at` TIMESTAMP NULL,
+    `next_payment_at` TIMESTAMP NULL,
+    `payment_method` VARCHAR(50) NULL,
+    `payment_details` JSON NULL,
+    `features` JSON NULL,
+    `metadata` JSON NULL,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+    
+    INDEX `idx_payment_subscriptions_user_id` (`user_id`),
+    INDEX `idx_payment_subscriptions_gateway` (`gateway`),
+    INDEX `idx_payment_subscriptions_status` (`status`),
+    INDEX `idx_payment_subscriptions_plan_type` (`plan_type`),
+    INDEX `idx_payment_subscriptions_next_payment_at` (`next_payment_at`),
+    INDEX `idx_payment_subscriptions_current_period_end` (`current_period_end`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

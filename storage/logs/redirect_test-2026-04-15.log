@@ -1,0 +1,14 @@
+{"message":"Database connection established","context":{"host":"localhost","database":"imei_bot"},"level":200,"level_name":"INFO","channel":"imei_bot","datetime":"2026-04-15T20:36:48.975804+02:00","extra":{}}
+{"message":"User logged in successfully","context":{"user_id":5,"ip":"unknown"},"level":200,"level_name":"INFO","channel":"imei_bot","datetime":"2026-04-15T20:36:49.185110+02:00","extra":{}}
+{"message":"User logged out","context":{"user_id":5},"level":200,"level_name":"INFO","channel":"imei_bot","datetime":"2026-04-15T20:36:49.187732+02:00","extra":{}}
+{"message":"User logged in successfully","context":{"user_id":6,"ip":"unknown"},"level":200,"level_name":"INFO","channel":"imei_bot","datetime":"2026-04-15T20:36:49.397292+02:00","extra":{}}
+{"message":"User logged out","context":{"user_id":6},"level":200,"level_name":"INFO","channel":"imei_bot","datetime":"2026-04-15T20:36:49.401577+02:00","extra":{}}
+{"message":"User logged in successfully","context":{"user_id":7,"ip":"unknown"},"level":200,"level_name":"INFO","channel":"imei_bot","datetime":"2026-04-15T20:36:49.608996+02:00","extra":{}}
+{"message":"User logged out","context":{"user_id":7},"level":200,"level_name":"INFO","channel":"imei_bot","datetime":"2026-04-15T20:36:49.610286+02:00","extra":{}}
+{"message":"Database connection established","context":{"host":"localhost","database":"imei_bot"},"level":200,"level_name":"INFO","channel":"imei_bot","datetime":"2026-04-15T20:36:57.328257+02:00","extra":{}}
+{"message":"User logged in successfully","context":{"user_id":5,"ip":"unknown"},"level":200,"level_name":"INFO","channel":"imei_bot","datetime":"2026-04-15T20:36:57.536789+02:00","extra":{}}
+{"message":"User logged out","context":{"user_id":5},"level":200,"level_name":"INFO","channel":"imei_bot","datetime":"2026-04-15T20:36:57.539999+02:00","extra":{}}
+{"message":"User logged in successfully","context":{"user_id":6,"ip":"unknown"},"level":200,"level_name":"INFO","channel":"imei_bot","datetime":"2026-04-15T20:36:57.747825+02:00","extra":{}}
+{"message":"User logged out","context":{"user_id":6},"level":200,"level_name":"INFO","channel":"imei_bot","datetime":"2026-04-15T20:36:57.749742+02:00","extra":{}}
+{"message":"User logged in successfully","context":{"user_id":7,"ip":"unknown"},"level":200,"level_name":"INFO","channel":"imei_bot","datetime":"2026-04-15T20:36:57.957266+02:00","extra":{}}
+{"message":"User logged out","context":{"user_id":7},"level":200,"level_name":"INFO","channel":"imei_bot","datetime":"2026-04-15T20:36:57.958904+02:00","extra":{}}

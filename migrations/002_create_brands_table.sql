@@ -1,0 +1,31 @@
+-- Create brands table for mobile device brands
+CREATE TABLE IF NOT EXISTS `brands` (
+    `id` BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    `uuid` VARCHAR(36) NOT NULL UNIQUE,
+    `name` VARCHAR(100) NOT NULL,
+    `slug` VARCHAR(100) NOT NULL UNIQUE,
+    `display_name` VARCHAR(100) NOT NULL,
+    `logo_url` VARCHAR(255) NULL,
+    `description` TEXT NULL,
+    `website` VARCHAR(255) NULL,
+    `country` VARCHAR(50) NULL,
+    `founded_year` YEAR NULL,
+    `parent_company` VARCHAR(100) NULL,
+    `is_popular` BOOLEAN NOT NULL DEFAULT FALSE,
+    `is_active` BOOLEAN NOT NULL DEFAULT TRUE,
+    `sort_order` INT UNSIGNED NOT NULL DEFAULT 0,
+    `meta_title` VARCHAR(255) NULL,
+    `meta_description` TEXT NULL,
+    `meta_keywords` VARCHAR(255) NULL,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    `deleted_at` TIMESTAMP NULL,
+    
+    INDEX `idx_brands_name` (`name`),
+    INDEX `idx_brands_slug` (`slug`),
+    INDEX `idx_brands_is_popular` (`is_popular`),
+    INDEX `idx_brands_is_active` (`is_active`),
+    INDEX `idx_brands_sort_order` (`sort_order`),
+    INDEX `idx_brands_country` (`country`),
+    INDEX `idx_brands_created_at` (`created_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

@@ -1,0 +1,29 @@
+RewriteEngine On
+
+# Direct access to auth pages
+RewriteCond %{REQUEST_URI} ^/auth/ [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^auth/(.*)$ auth/$1.php [L,QSA]
+
+# API Routing
+RewriteCond %{REQUEST_URI} ^/api/ [NC]
+RewriteRule ^api/(.*)$ api.php [L,QSA]
+
+# Handle requests to api.php directly
+RewriteCond %{REQUEST_FILENAME} api\.php [NC]
+RewriteRule ^api\.php$ api.php [L]
+
+# Default routing for other requests
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L,QSA]
+
+# Set proper headers
+Header always set Access-Control-Allow-Origin "*"
+Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+Header always set Access-Control-Allow-Headers "Content-Type, Authorization"
+
+# Handle preflight requests
+RewriteCond %{REQUEST_METHOD} OPTIONS
+RewriteRule ^(.*)$ index.php [L]

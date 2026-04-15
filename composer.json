@@ -1,0 +1,86 @@
+{
+    "name": "imei-bot/platform",
+    "description": "Enterprise IMEI Generation and File Download Platform with Multi-Platform Bot Integration",
+    "type": "project",
+    "keywords": ["imei", "telegram-bot", "whatsapp-bot", "file-download", "php"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "IMEI Bot Team",
+            "email": "admin@imei-bot.com"
+        }
+    ],
+    "require": {
+        "php": "^8.4",
+        "ext-pdo": "*",
+        "ext-mbstring": "*",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-openssl": "*",
+        "ext-gd": "*",
+        "telegram-bot/api": "^3.0",
+        "firebase/php-jwt": "^6.10",
+        "vlucas/phpdotenv": "^5.6",
+        "respect/validation": "^2.3",
+        "twig/twig": "^3.8",
+        "monolog/monolog": "^3.5",
+        "predis/predis": "^2.2",
+        "aws/aws-sdk-php": "^3.300",
+        "stripe/stripe-php": "^14.9",
+        "phpstan/phpstan": "^1.10",
+        "symfony/console": "^7.0",
+        "symfony/http-foundation": "^7.0",
+        "symfony/routing": "^7.0",
+        "symfony/cache": "^7.0",
+        "league/flysystem": "^3.28",
+        "league/flysystem-aws-s3-v3": "^3.28",
+        "guzzlehttp/guzzle": "^7.8",
+        "ramsey/uuid": "^4.7",
+        "brick/math": "^0.11",
+        "nesbot/carbon": "^2.71"
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.34",
+        "phpstan/phpstan": "^1.10",
+        "symfony/var-dumper": "^7.0",
+        "friendsofphp/php-cs-fixer": "^3.49",
+        "phpunit/phpunit": "^10.5",
+        "mockery/mockery": "^1.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "IMEIBot\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "test": "pest",
+        "test-coverage": "pest --coverage",
+        "phpstan": "phpstan analyse",
+        "cs-fix": "php-cs-fixer fix",
+        "cs-check": "php-cs-fixer fix --dry-run --diff",
+        "migrate": "php scripts/migrate.php",
+        "seed": "php scripts/seed.php",
+        "serve": "php -S localhost:8000 -t public"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

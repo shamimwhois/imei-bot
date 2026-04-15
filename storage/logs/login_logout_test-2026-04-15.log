@@ -1,0 +1,3 @@
+{"message":"Database connection established","context":{"host":"localhost","database":"imei_bot"},"level":200,"level_name":"INFO","channel":"imei_bot","datetime":"2026-04-15T20:41:36.828488+02:00","extra":{}}
+{"message":"User logged in successfully","context":{"user_id":5,"ip":"unknown"},"level":200,"level_name":"INFO","channel":"imei_bot","datetime":"2026-04-15T20:41:37.038571+02:00","extra":{}}
+{"message":"User logged out","context":{"user_id":5},"level":200,"level_name":"INFO","channel":"imei_bot","datetime":"2026-04-15T20:41:37.039655+02:00","extra":{}}

@@ -1,0 +1,33 @@
+-- Create payment_gateways table for gateway configuration
+CREATE TABLE IF NOT EXISTS `payment_gateways` (
+    `id` BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    `uuid` VARCHAR(36) NOT NULL UNIQUE,
+    `name` VARCHAR(100) NOT NULL,
+    `gateway_type` ENUM('binance_p2p', 'binance_b2b', 'bkash', 'nagad', 'bank_card', 'paypal', 'stripe') NOT NULL,
+    `is_active` BOOLEAN NOT NULL DEFAULT TRUE,
+    `is_test_mode` BOOLEAN NOT NULL DEFAULT TRUE,
+    `config` JSON NOT NULL,
+    `supported_currencies` JSON NULL,
+    `min_amount` DECIMAL(10,2) NOT NULL DEFAULT 1.00,
+    `max_amount` DECIMAL(10,2) NOT NULL DEFAULT 10000.00,
+    `fee_percentage` DECIMAL(5,2) NOT NULL DEFAULT 0.00,
+    `fixed_fee` DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+    `settlement_time` ENUM('instant', '1_hour', '24_hours', '3_days', '7_days') NOT NULL DEFAULT 'instant',
+    `webhook_url` VARCHAR(500) NULL,
+    `webhook_secret` VARCHAR(255) NULL,
+    `api_key` VARCHAR(255) NULL,
+    `api_secret` VARCHAR(255) NULL,
+    `merchant_id` VARCHAR(255) NULL,
+    `description` TEXT NULL,
+    `logo_url` VARCHAR(500) NULL,
+    `display_order` INT UNSIGNED NOT NULL DEFAULT 0,
+    `last_tested_at` TIMESTAMP NULL,
+    `test_status` ENUM('not_tested', 'success', 'failed') NULL,
+    `test_message` TEXT NULL,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+    UNIQUE KEY `uk_payment_gateways_gateway_type` (`gateway_type`),
+    INDEX `idx_payment_gateways_is_active` (`is_active`),
+    INDEX `idx_payment_gateways_display_order` (`display_order`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
